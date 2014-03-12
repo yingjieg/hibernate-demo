@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 11, 2014 9:18:21 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="code.demo.model.Platform" table="platform" catalog="demo">
+        <id name="id" type="java.lang.Short">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="platformName" type="string">
+            <column name="platformName" length="50" />
+        </property>
+        <set name="testRecords" table="test_record" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="platformId" not-null="true" />
+            </key>
+            <one-to-many class="code.demo.model.TestRecord" />
+        </set>
+    </class>
+</hibernate-mapping>
